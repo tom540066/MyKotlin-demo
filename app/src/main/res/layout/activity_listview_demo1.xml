@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.kelin.mvvmlight.bindingadapter.recyclerview.LayoutManagers" />
+        <import type="android.view.View" />
+        <import type="com.example.ls.mykotlin.R" />
+        <variable
+            name="viewModel"
+            type="com.example.ls.mykotlin.model.ListDemo1Model" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.andview.refreshview.XRefreshView
+            android:id="@+id/pull"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            app:isHeightMatchParent="true"
+            app:isWidthMatchParent="true">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        </com.andview.refreshview.XRefreshView>
+    </LinearLayout>
+
+</layout>

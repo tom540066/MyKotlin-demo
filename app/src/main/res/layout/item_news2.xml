@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:build="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.ls.mykotlin.R" />
+        <import type="android.view.View" />
+
+        <variable
+            name="dataItem"
+            type="com.example.ls.mykotlin.bean.SimpleNewsBean" />
+
+        <variable
+            name="position"
+            type="int" />
+
+        <!--<variable name="listener" type="com.example.ls.mykotlin.aautil.inter.OnItemClickListener"/>
+        android:onClick="@{() -> listener.onItemClick(dataItem,position)}"
+        android:onClick="@{(p) -> listener.onItemBtnClick(p,dataItem,position,1)}"
+        -->
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/header_iv"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            build:uri="@{dataItem.thumbnail}" />
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toEndOf="@id/header_iv"
+            android:text="@{dataItem.name}"
+            android:textColor="#000"
+            android:textSize="16sp"
+            tools:ignore="RtlCompat" />
+
+        <!--描述-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/title_tv"
+            android:layout_below="@id/title_tv"
+            android:background="#000"
+            android:layout_marginTop="8dp"
+            android:text="@{dataItem.description}"
+            android:textSize="14sp"
+            tools:ignore="RtlCompat" />
+
+        <!--点赞或者取消点赞,onClick()用的lambda表达式-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/header_iv"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="8dp"
+            android:visibility="@{dataItem.isVis%2==0 ?View.GONE : View.VISIBLE}"
+
+            build:resId="@{dataItem.isGood ? R.mipmap.dianzan_press : R.mipmap.dianzan_normal }"
+            tools:ignore="RtlCompat" />
+
+    </RelativeLayout>
+</layout>
